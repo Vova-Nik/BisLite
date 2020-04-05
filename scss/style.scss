@@ -1,45 +1,59 @@
 //Colours
 $color_bg_light: #e8ebf1;
-//$nav_hover: #2aacc8;
 $color_bg_dark: #2aacc8;
+$color_bg_mid:#e8fcfe;
 
 //sizes
 $main_width: 100%; //main container width
 $content_width: 1000px;
 
 @mixin before-icon($icon, $bg_color) {
-    content: "";
-    display: block;
-    float: left;
-    margin-top: 4px;
 
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color:  $bg_color;
-    margin-right: 18px;
-    background-image: url($icon);
-    background-repeat: no-repeat;
-    background-position: center;
-    margin-top: -12px;
-  //  background-size: 20px;
+    &:before {
+        content: "";
+        display: block;
+        float: left;
+        margin-top: -10px;
+        margin-right: 16px;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: $bg_color;
+        background-image: url($icon);
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &:after {
+        content: "";
+         clear: both;
+    }
 }
+
 
 body {
     font-family: "ArialRegular";
+    background-color: #fff;
 }
 
 .h2 {
+
     text-transform: uppercase;
-    font-family: ArialRegular, Helvetica, sans-serif;
+    font-family: "ArialBlack" Helvetica sans-serif;
     font-size: 15px;
     color: black;
     background-color: transparent;
     font-weight: 800;
+    padding-bottom: 14px;
+    padding-top: 14px;
+}
+
+.h2::after {
+     content: "";
+    clear: both;
 }
 
 .main-container {
-    background-color: $color_bg_light;
     width: $main_width;
     overflow: hidden;
     min-width: 1000px;
@@ -47,6 +61,8 @@ body {
 
 //**************************nav section*********************************
 .top {
+    background-color: $color_bg_light;
+
     .logo-container {
         width: $content_width;
         height: 120px;
@@ -137,14 +153,16 @@ body {
 .ul-submenu {
     position: absolute;
     left: 0;
-    opacity: 0;
+    display: none;
+    width: 200px;
     border-bottom: 4px solid #2aacc8;
     text-transform: none;
 }
 
 .dropdown:hover .ul-submenu {
     opacity: 1;
-    width: 200px;
+    display: block;
+    // height: auto;
     background-color: #fff;
     transition: 1s;
 }
@@ -186,7 +204,6 @@ body {
         background-position: center;
         background-repeat: no-repeat;
         width: 1000px;
-
     }
 
     .header-bg2 {
@@ -233,13 +250,13 @@ body {
 //****************middle section**************************
 
 .midle {
-    height: 305px;
     background-color: $color_bg_light;
 
     .container {
         width: $content_width;
         margin: 0 auto;
         padding-top: 56px;
+        padding-bottom: 50px;
         font-size: 0;
     }
 
@@ -256,42 +273,41 @@ body {
     }
 
     .h2 {
-        padding-top: 14px;
-        font-family: "ArialBold";
+        //padding-top: 14px;
+        //font-family: "ArialBold";
         color: rgb(0, 0, 0);
-        line-height: 1.333;
+        //line-height: 1.3;
     }
 
     .midle-card:nth-child(1) {
-        .h2::before {
+        .h2 {
             @include before-icon('../images/midle_section/shape.png', $color_bg_dark);
         }
     }
 
     .midle-card:nth-child(2) {
-        .h2::before {
+        .h2 {
             @include before-icon('../images/midle_section/fullscreen.png', $color_bg_dark);
         }
     }
 
     .midle-card:nth-child(3) {
-        .h2::before {
+        .h2 {
             @include before-icon('../images/midle_section/viewlist.png', $color_bg_dark);
         }
     }
 
     .midle-card:nth-child(4) {
-        .h2::before {
+        .h2 {
             @include before-icon('../images/midle_section/plane.png', $color_bg_dark);
         }
     }
 
     .midle-card-text {
-        padding-top: 14px;
+        padding-top: 16px;
         font-size: 13px;
         font-family: "Arial";
-        color: rgb(54, 54, 54);
-        line-height: 1.538;
+        line-height: 1.5;
     }
 
     .read-more {
@@ -326,30 +342,40 @@ body {
 
     .wrapper {
         padding-top: 10px;
-        padding-bottom: 10px;
         border-bottom: 1px solid $color_bg_dark;
+
         .h2 {
             float: left;
-            padding-top: 12px;
-            font-family: "ArialBold";
-        }
-
-         .h2::before {
             @include before-icon('../images/latest_works/arrow_tilted.png', white);
-            margin-top: -12px;
-         }
+            padding-right: 8px;
+            padding-bottom: 4px;
+        }
 
         .button {
             margin: 6px;
             float: right;
+            width: 20px;
+            height: 20px;
             border-radius: 50%;
             border-color: transparent;
             background-color: #81e4ed;
-            font-size: 13px;
+            background-repeat: no-repeat;
         }
 
         .button:hover {
             background-color: $color_bg_light
+        }
+
+        .button:first-of-type {
+            background-image: url('../images/arrow_right.png');
+            background-position-x: 4px;
+            background-position-y: 3px;
+        }
+
+        .button:last-of-type {
+            background-image: url('../images/arrow_left.png');
+            background-position-x: 3px;
+            background-position-y: 3px;
         }
     }
 
@@ -364,7 +390,7 @@ body {
             position: relative;
             background-color: green;
 
-            .latest-works-card-menu{
+            .latest-works-card-menu {
                 width: 100%;
                 height: 50%;
                 background-color: $color_bg_dark;
@@ -372,35 +398,37 @@ body {
                 top: 50%;
                 opacity: 0;
                 font-size: 0;
-                padding: 10px 0 0 50px;
+                padding: 15px 0 0 60px;
 
-                
-                .link{
-                    width: 66px;
-                    height: 60px;
+                .link {
+                    width: 50px;
+                    height: 50px;
                     display: inline-block;
 
                 }
-                .link:first-child{
-                    padding-left: 30px;
+
+                .link:first-child {
                     background-image: url('../images/latest_works/preview.png');
                     background-position: center;
                     background-repeat: no-repeat;
 
                 }
-                .link:last-child{
+
+                .link:last-child {
+                    margin-left: 10px;
                     background-image: url('../images/latest_works/link.png');
                     background-position: center;
                     background-repeat: no-repeat;
                 }
             }
 
-            .latest-works-card-menu:hover{
+            .latest-works-card-menu:hover {
                 opacity: 1;
                 transition: .8s;
             }
         }
-        .latest-works-card:last-child{
+
+        .latest-works-card:last-child {
             margin-right: 0;
         }
     }
@@ -408,35 +436,215 @@ body {
 
 //********************testimonials***************************
 
-.testimonials--clients{
+.testimonials--clients {
     background-color: #fff;
-    .container{
+
+    .container {
         width: $content_width;
         margin: 0 auto;
+        padding-top: 14px;
+        padding-bottom: 40px;
     }
 
-    .card{
-        width: 50%;
+    .card {
+        width: 480px;
     }
 
-    .h2{
-        padding-top: 20px;
-        font-family: "ArialBold";
-    }
-    .card:first-child{
+    .card:first-child {
         float: left;
-        .h2::before{
+
+        .h2 {
             @include before-icon('../images/testimonials/comments.png', white);
-            margin-top: -12px;
+            left: 50px;
         }
     }
 
-    .card:last-child{
+    .card:last-child {
         float: right;
-        .h2::before{
+
+        .h2 {
             @include before-icon('../images/clients/clients.png', white);
-            margin-top: -12px;
+            left: 50px;
         }
     }
 }
 
+.clients-wrapper {
+    font-size: 0;
+    width: 480px;
+    min-width: 160px;
+    float: right;
+
+    .img {
+        // float: right;
+        display: inline-block;
+        width: 160px;
+    }
+}
+
+.card {
+    .text {
+        margin-right: 40px;
+        font-size: 14px;
+        font-family: "Arial";
+        color: rgb(54, 54, 54);
+        line-height: 1.75;
+    }
+
+    .sign {
+        margin-top: 26px;
+        font-family: "ArialBoldItalic";
+        font-size: 14px;
+        line-height: 1.7;
+    }
+}
+
+//*******************Downloads********************
+.download {
+    background-color: #fff;
+
+    .container {
+        width: 1000px;
+        margin: 0 auto;
+        padding-top: 36px;
+        padding-bottom: 20px;
+        padding-left: 30px;
+        background-color: $color_bg_mid;
+    }
+
+    .text {
+        float: left;
+        width: 600px;
+        line-height: 1.74;
+    }
+
+    .d-wrapper {
+        width: 320px;
+        float: right;
+
+    }
+
+    .link {
+        display: block;
+        margin: 0 auto;
+        width: 244px;
+        height: 64px;
+        padding: 6px 12px;
+        border-radius: 8px;
+        background-color: transparent;
+        background-image: url('../images/download/button_download_psd.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+
+        .h2 {
+            font-size: 18px;
+            @include before-icon('../images/download/download.png', transparent);
+        }
+    }
+}
+
+//*****************about****************8
+.about {
+    margin-top: 40px;
+    background-color: $color_bg_light;
+
+    .container {
+        width: $content_width;
+        margin: 0 auto;
+        padding-top: 20px;
+        vertical-align: top;
+        font-size: 14px;
+    }
+
+    .about-block {
+        float: left;
+
+        .link {
+            color: black;
+        }
+
+    }
+
+    .about-block:first-child {
+        width: 300px;
+        padding-right: 60px;
+
+        .text {
+            margin-top: 10px;
+            font-size: 13px;
+            line-height: 1.5;
+        }
+    }
+
+    .about-block:nth-child(2) {
+        width: 150px;
+
+        .link {
+            line-height: 1.8;
+        }
+    }
+
+    .about-block:nth-child(3) {
+        width: 170px;
+
+        .link {
+            line-height: 1.8;
+        }
+
+    }
+
+    .about-block:nth-child(4) {
+        width: 164px;
+
+        .text {
+            padding-top: 8px;
+        }
+
+        .h3 {
+            font-weight: 800;
+        }
+    }
+
+    .about-block:last-child {
+        width: 216px;
+        font-size: 0;
+
+        .h2 {
+            margin-left: 32px;
+        }
+
+        .social {
+            padding-top: 10px;
+            display: inline-block;
+            margin-left: 24px;
+        }
+    }
+}
+
+//*****************footer****************8
+.footer {
+    background-color: $color_bg_light;
+    .container {
+        width: 1400px;
+        margin: 0 auto;
+        padding-top: 30px;
+        padding-left: 200px;
+        padding-right: 200px;
+        padding-bottom: 28px;
+        margin-bottom: 100px;
+
+    }
+
+    .text {
+        float: left;
+        width: 660px;
+        padding-top: 6px;
+        font-size: 13px;
+    }
+
+    .logo {
+        margin-top: 0;
+        float: right;
+    }
+}
